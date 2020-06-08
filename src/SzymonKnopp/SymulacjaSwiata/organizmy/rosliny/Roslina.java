@@ -4,6 +4,7 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
 import java.util.Random;
 
 public abstract class Roslina extends Organizm {
@@ -16,6 +17,9 @@ public abstract class Roslina extends Organizm {
 
 	@Override
 	public abstract char gatunek();
+
+	@Override
+	public abstract Color getKolor();
 
 	protected abstract Organizm potomek(Pole pole);
 

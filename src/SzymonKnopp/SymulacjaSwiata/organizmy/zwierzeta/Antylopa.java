@@ -3,6 +3,8 @@ package SzymonKnopp.SymulacjaSwiata.organizmy.zwierzeta;
 import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
+
+import java.awt.*;
 import java.util.Random;
 
 public class Antylopa extends Zwierze {
@@ -21,6 +23,11 @@ public class Antylopa extends Zwierze {
 	@Override
 	public char gatunek() {
 		return 'A';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(28,100,58);
 	}
 
 	@Override

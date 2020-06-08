@@ -4,6 +4,8 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
+
 public class Trawa extends Roslina {
 	public Trawa(Swiat swiat, Pole pole) {
 		super(swiat, pole);
@@ -15,6 +17,11 @@ public class Trawa extends Roslina {
 	@Override
 	public char gatunek() {
 		return 'T';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(110,100,30);
 	}
 
 	@Override

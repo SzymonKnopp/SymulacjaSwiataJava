@@ -4,6 +4,8 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
+
 public class Lis extends Zwierze {
 	public Lis(Swiat swiat, Pole pole) {
 		super(swiat, pole);
@@ -20,6 +22,11 @@ public class Lis extends Zwierze {
 	@Override
 	public char gatunek() {
 		return 'L';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(30,100,45);
 	}
 
 	@Override

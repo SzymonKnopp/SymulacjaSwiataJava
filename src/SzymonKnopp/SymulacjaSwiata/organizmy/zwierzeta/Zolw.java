@@ -3,6 +3,8 @@ package SzymonKnopp.SymulacjaSwiata.organizmy.zwierzeta;
 import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
+
+import java.awt.*;
 import java.util.Random;
 
 public class Zolw extends Zwierze {
@@ -21,6 +23,11 @@ public class Zolw extends Zwierze {
 	@Override
 	public char gatunek() {
 		return 'Z';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(16,83,23);
 	}
 
 	@Override

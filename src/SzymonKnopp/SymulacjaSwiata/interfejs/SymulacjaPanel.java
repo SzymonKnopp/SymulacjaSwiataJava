@@ -24,7 +24,7 @@ public class SymulacjaPanel extends JPanel {
 		_planszaPanel.ustawOrganizmy(organizmy);
 	}
 
-	public InputCzlowieka zabierzRuchCzlowieka(){
+	public InputCzlowieka zabierzInputCzlowieka(){
 		return _simMenuPanel.zabierzInputCzlowieka();
 	}
 

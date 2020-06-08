@@ -15,6 +15,7 @@ public class ZapiszSwiatPanel extends JPanel implements ActionListener {
 
 		_nazwaSwiataField = new JTextField();
 		_nazwaSwiataField.setPreferredSize(new Dimension(100, 20));
+		_nazwaDoZapisu = null;
 
 		add (new JLabel("ZAPISYWANIE"){
 			{

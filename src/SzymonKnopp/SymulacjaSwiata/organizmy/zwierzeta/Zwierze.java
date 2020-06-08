@@ -4,6 +4,7 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
 import java.util.Random;
 
 public abstract class Zwierze extends Organizm {
@@ -14,7 +15,11 @@ public abstract class Zwierze extends Organizm {
 		super(swiat, pole, wiek, sila);
 	}
 
+	@Override
 	public abstract char gatunek();
+
+	@Override
+	public abstract Color getKolor();
 
 	protected abstract Organizm potomek(Pole pole);
 

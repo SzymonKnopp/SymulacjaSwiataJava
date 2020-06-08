@@ -13,7 +13,6 @@ public abstract class Organizm {
 	protected int _wiek;
 	protected int _sila;
 	protected int _inicjatywa;
-	protected Color _kolor;
 
 	public Organizm(Swiat swiat, Pole pole) {
 		_swiat = swiat;
@@ -69,13 +68,7 @@ public abstract class Organizm {
 		return organizm.toString();
 	}
 
-	public void rysowanie() {
-		System.out.print(gatunek());
-	}
-
-	public Color getKolor() {
-		return _kolor;
-	}
+	public abstract Color getKolor();
 
 	public int getSila() {
 		return _sila;

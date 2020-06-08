@@ -4,6 +4,8 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
+
 public class Owca extends Zwierze {
 	public Owca(Swiat swiat, Pole pole) {
 		super(swiat, pole);
@@ -20,6 +22,11 @@ public class Owca extends Zwierze {
 	@Override
 	public char gatunek() {
 		return 'O';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(0,0,100);
 	}
 
 	@Override

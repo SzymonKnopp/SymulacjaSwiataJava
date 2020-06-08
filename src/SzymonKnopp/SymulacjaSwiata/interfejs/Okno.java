@@ -27,8 +27,8 @@ public class Okno extends JFrame {
 		return _menuPanel.getWymiaryNowegoSwiata();
 	}
 
-	public String getNazwaZapisu(){
-		return _menuPanel.getNazwaZapisu();
+	public String zabierzNazwaZapisu(){
+		return _menuPanel.zabierzNazwaZapisu();
 	}
 
 	public void przedstawSymulacje(Pole pola){
@@ -41,5 +41,15 @@ public class Okno extends JFrame {
 		_symulacjaPanel.ustawOrganizmy(organizmy);
 	}
 
+	public InputCzlowieka zabierzInputCzlowieka(){
+		return _symulacjaPanel.zabierzInputCzlowieka();
+	}
 
+	public void ustawKomunikatONiesmiertelnosci(int turyNiesmiertelnosci){
+		_symulacjaPanel.ustawKomunikatONiesmiertelnosci(turyNiesmiertelnosci);
+	}
+
+	public String zabierzNazwaDoZapisu(){
+		return _symulacjaPanel.zabierzNazwaDoZapisu();
+	}
 }

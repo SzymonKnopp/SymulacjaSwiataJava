@@ -4,6 +4,8 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
+
 public class WilczeJagody extends Roslina {
 	public WilczeJagody(Swiat swiat, Pole pole) {
 		super(swiat, pole);
@@ -17,6 +19,11 @@ public class WilczeJagody extends Roslina {
 	@Override
 	public char gatunek() {
 		return 'J';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(288,100,54);
 	}
 
 	@Override

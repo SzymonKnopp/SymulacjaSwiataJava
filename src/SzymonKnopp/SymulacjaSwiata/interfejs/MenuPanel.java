@@ -33,7 +33,7 @@ public class MenuPanel extends JPanel {
 		return _nowySwiatPanel.getWymiaryNowegoSwiata();
 	}
 
-	public String getNazwaZapisu(){
-		return  _wczytajSwiatPanel.getNazwaZapisu();
+	public String zabierzNazwaZapisu(){
+		return  _wczytajSwiatPanel.zabierzNazwaZapisu();
 	}
 }

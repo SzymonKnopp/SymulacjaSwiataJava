@@ -5,6 +5,7 @@ import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 import SzymonKnopp.SymulacjaSwiata.organizmy.rosliny.BarszczSosnowskiego;
 
+import java.awt.*;
 import java.util.Random;
 
 public class CyberOwca extends Zwierze {
@@ -27,6 +28,11 @@ public class CyberOwca extends Zwierze {
 	@Override
 	public char gatunek() {
 		return 'C';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(28, 0,73);
 	}
 
 	@Override

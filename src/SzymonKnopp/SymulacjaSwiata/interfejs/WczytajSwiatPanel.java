@@ -14,6 +14,7 @@ public class WczytajSwiatPanel extends JPanel implements ActionListener {
 		_poleNazwa = new JTextField();
 		_poleNazwa.setPreferredSize(new Dimension(100, 20));
 		_poleNazwa.setHorizontalAlignment(SwingConstants.RIGHT);
+		_nazwaZapisu = null;
 
 		_nieZnalezionoZapisuLabel = new JLabel("Nie znaleziono takiego zapisu");
 		_nieZnalezionoZapisuLabel.setVisible(false);
@@ -58,7 +59,9 @@ public class WczytajSwiatPanel extends JPanel implements ActionListener {
 		hideLabelThread.start();
 	}
 
-	public String getNazwaZapisu(){
-		return _nazwaZapisu;
+	public String zabierzNazwaZapisu(){
+		String buforNazwa = _nazwaZapisu;
+		_nazwaZapisu = null;
+		return buforNazwa;
 	}
 }

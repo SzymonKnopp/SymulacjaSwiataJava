@@ -2,14 +2,17 @@ package SzymonKnopp.SymulacjaSwiata.organizmy.zwierzeta;
 
 import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
+import SzymonKnopp.SymulacjaSwiata.interfejs.InputCzlowieka;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
+
+import java.awt.*;
 
 public class Czlowiek extends Zwierze {
 	private static final int DLUGOSC_ZDOLNOSCI = 5;
 	private boolean _specjalnaZdolnosc;
 	private int _timerZdolnosci;
 	private boolean _cooldown;
-	private int _input;
+	private InputCzlowieka _input;
 
 	public Czlowiek(Swiat swiat, Pole pole) {
 		super(swiat, pole);
@@ -19,7 +22,7 @@ public class Czlowiek extends Zwierze {
 		_specjalnaZdolnosc = false;
 		_timerZdolnosci = 0;
 		_cooldown = false;
-		_input = -1;
+		_input = null;
 	}
 
 	public Czlowiek(Swiat swiat, Pole pole, int wiek, int sila, boolean specjalnaZdolnosc, int timerZdolnosci) {
@@ -28,12 +31,17 @@ public class Czlowiek extends Zwierze {
 		_inicjatywa = 4;
 		_specjalnaZdolnosc = specjalnaZdolnosc;
 		_timerZdolnosci = timerZdolnosci;
-		_input = 0;
+		_input = null;
 	}
 
 	@Override
 	public char gatunek() {
 		return '@';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(0,100,50);
 	}
 
 	@Override
@@ -50,16 +58,16 @@ public class Czlowiek extends Zwierze {
 
 		kierunek_t kierunekRuchu;
 		switch (_input) {
-			case 'i':
+			case DOL:
 				kierunekRuchu = kierunek_t.dol; // kierunek w osi y obrócony, bo rysowane od y=0 (u góry)
 				break;
-			case 'l':
+			case PRAWO:
 				kierunekRuchu = kierunek_t.prawo;
 				break;
-			case 'k':
+			case GORA:
 				kierunekRuchu = kierunek_t.gora;
 				break;
-			case 'j':
+			case LEWO:
 				kierunekRuchu = kierunek_t.lewo;
 				break;
 			default:
@@ -85,7 +93,7 @@ public class Czlowiek extends Zwierze {
 		return _timerZdolnosci;
 	}
 
-	public void setInput(int input) {
+	public void setInput(InputCzlowieka input) {
 		_input = input;
 	}
 
@@ -119,23 +127,15 @@ public class Czlowiek extends Zwierze {
 	}
 
 	private void ustawSpecjalnaZdolnosc() {
-		if (_timerZdolnosci > 0)
+		if (_timerZdolnosci > -5) {
 			_timerZdolnosci--;
-
-		if (_timerZdolnosci == 0) {
-			if (!_cooldown && _specjalnaZdolnosc) {
-				_timerZdolnosci = DLUGOSC_ZDOLNOSCI;
-				_specjalnaZdolnosc = false;
-				_cooldown = true;
-			}
-			else if (_cooldown) {
-				_cooldown = false;
-			}
-			else if (_input == 'n') {
-				_timerZdolnosci = DLUGOSC_ZDOLNOSCI;
-				_specjalnaZdolnosc = true;
-			}
 		}
+
+		if (_input == InputCzlowieka.ZDOLNOSC) {
+			_timerZdolnosci = DLUGOSC_ZDOLNOSCI;
+		}
+
+		_specjalnaZdolnosc = (_timerZdolnosci > 0);
 	}
 
 	@Override
