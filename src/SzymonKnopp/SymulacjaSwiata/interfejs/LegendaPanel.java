@@ -15,25 +15,23 @@ public class LegendaPanel extends JPanel {
 		add(new OrganizmPanel(Color.GRAY, "Cyberowca"));
 		add(new OrganizmPanel(Color.YELLOW, "Mlecz"));
 		add(new OrganizmPanel(Color.RED, "Guarana"));
-		add(new OrganizmPanel(Color.getHSBColor(0.1f,1f,0.6f), "Żółw"));
-		add(new OrganizmPanel(Color.getHSBColor(0.4f,1f,0.3f), "Barszcz Sosnowskiego"));
-		add(new OrganizmPanel(Color.getHSBColor(0.75f,1f,0.3f), "Wilcze jagody"));
+		add(new OrganizmPanel(Color.getHSBColor(0.1f, 1f, 0.6f), "Żółw"));
+		add(new OrganizmPanel(Color.getHSBColor(0.4f, 1f, 0.3f), "Barszcz Sosnowskiego"));
+		add(new OrganizmPanel(Color.getHSBColor(0.75f, 1f, 0.3f), "Wilcze jagody"));
 		add(new OrganizmPanel(Color.ORANGE, "Lis"));
 		add(new OrganizmPanel(Color.PINK, "Antylopa"));
 	}
 
-	private class OrganizmPanel extends JPanel{
+	private static class OrganizmPanel extends JPanel{
 		private final Color _kolor;
-		private final String _nazwa;
 
 		public OrganizmPanel(Color kolor, String nazwa){
 			setLayout(new FlowLayout());
 			setPreferredSize(new Dimension(200, 35));
 
 			_kolor = kolor;
-			_nazwa = nazwa;
 
-			add(new JLabel(_nazwa));
+			add(new JLabel(nazwa));
 		}
 
 		@Override
