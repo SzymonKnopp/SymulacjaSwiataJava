@@ -26,7 +26,7 @@ public class Owca extends Zwierze {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(0,0,100);
+		return Color.LIGHT_GRAY;
 	}
 
 	@Override

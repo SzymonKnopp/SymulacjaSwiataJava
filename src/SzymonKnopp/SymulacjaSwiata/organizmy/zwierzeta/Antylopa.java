@@ -27,7 +27,7 @@ public class Antylopa extends Zwierze {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(28,100,58);
+		return Color.PINK;
 	}
 
 	@Override

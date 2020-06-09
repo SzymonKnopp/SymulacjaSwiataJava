@@ -30,7 +30,9 @@ public abstract class Organizm {
 		_sila = sila;
 		_inicjatywa = 0;
 	}
-
+	public void rysowanie(){
+		System.out.print(gatunek());
+	}
 	public abstract char gatunek();
 
 	public abstract void akcja();

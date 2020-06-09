@@ -41,7 +41,7 @@ public class Czlowiek extends Zwierze {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(0,100,50);
+		return Color.BLUE;
 	}
 
 	@Override

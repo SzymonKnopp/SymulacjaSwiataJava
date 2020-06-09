@@ -71,12 +71,14 @@ public class Kontroler {
 	}
 
 	public void przeprowadzSymulacje() {
+		_swiat.rysujSwiat();
 		_interfejs.ustawOrganizmy(_swiat.getPola());
 		_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
 		_interfejs.odswiez();
 		przetworzInput();
 		while (true) {
 			_swiat.wykonajTure();
+			_swiat.rysujSwiat();
 			_interfejs.ustawOrganizmy(_swiat.getPola());
 			_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
 			_interfejs.odswiez();

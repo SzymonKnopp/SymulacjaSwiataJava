@@ -21,7 +21,7 @@ public class Guarana extends Roslina{
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(110,100,50);
+		return Color.RED;
 	}
 
 	@Override

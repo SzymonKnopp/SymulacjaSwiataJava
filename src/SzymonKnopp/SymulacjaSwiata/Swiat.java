@@ -28,6 +28,30 @@ public class Swiat {
 		_wymiar = wymiary;
 		_pola = new Organizm[_wymiar.x][_wymiar.y];
 	}
+	public void rysujSwiat() {
+		final char pustePole = ' ';
+		System.out.println();
+		System.out.print('\t');
+		for (int x = 0; x < _wymiar.x + 1; x++) {
+			System.out.print("# ");
+		}
+		System.out.println("#");
+		for (int y = 0; y < _wymiar.y; y++) {
+			System.out.print("\t# ");
+			for (int x = 0; x < _wymiar.x; x++) {
+				if (_pola[x][y] == null)
+					System.out.print(pustePole);
+				else _pola[x][y].rysowanie();
+				System.out.print(" ");
+			}
+			System.out.print("#\n");
+		}
+		System.out.print('\t');
+		for (int x = 0; x <  _wymiar.x + 1; x++) {
+			System.out.print("# ");
+		}
+		System.out.println("#");
+	}
 
 	public void wykonajTure() {
 		_licznikTur++;

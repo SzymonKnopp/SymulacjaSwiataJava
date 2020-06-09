@@ -26,7 +26,7 @@ public class Lis extends Zwierze {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(30,100,45);
+		return Color.ORANGE;
 	}
 
 	@Override

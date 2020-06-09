@@ -16,6 +16,7 @@ public class SymulacjaPanel extends JPanel {
 		_planszaPanel = new PlanszaPanel(pola);
 		_simMenuPanel = new SimMenuPanel();
 
+		add(new LegendaPanel());
 		add(_planszaPanel);
 		add(_simMenuPanel);
 	}

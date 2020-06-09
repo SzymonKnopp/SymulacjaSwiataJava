@@ -21,7 +21,7 @@ public class Mlecz extends Roslina {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(54,100,50);
+		return Color.YELLOW;
 	}
 
 	@Override

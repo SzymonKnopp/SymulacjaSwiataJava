@@ -26,7 +26,7 @@ public class Wilk extends Zwierze {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(0,0,35);
+		return Color.BLACK;
 	}
 
 	@Override

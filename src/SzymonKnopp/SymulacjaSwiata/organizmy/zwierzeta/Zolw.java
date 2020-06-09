@@ -27,7 +27,7 @@ public class Zolw extends Zwierze {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(16,83,23);
+		return Color.getHSBColor(0.1f,1f,0.6f);
 	}
 
 	@Override

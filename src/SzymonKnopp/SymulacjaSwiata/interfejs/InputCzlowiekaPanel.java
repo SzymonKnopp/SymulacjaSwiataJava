@@ -4,13 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class InputCzlowiekaPanel extends JPanel implements ActionListener, KeyListener {
+public class InputCzlowiekaPanel extends JPanel implements ActionListener {
 	private InputCzlowieka _inputCzlowieka;
 	private final JLabel _niesmiertelnoscLabel;
 	private final JButton _niesmiertelnoscButton;
+	private final JButton _goraButton;
+	private final JButton _lewoButton;
+	private final JButton _dolButton;
+	private final JButton _prawoButton;
 
 	public InputCzlowiekaPanel(){
 		setLayout(new FlowLayout());
@@ -20,11 +22,27 @@ public class InputCzlowiekaPanel extends JPanel implements ActionListener, KeyLi
 		_inputCzlowieka = null;
 		_niesmiertelnoscLabel = new JLabel();
 		_niesmiertelnoscButton = new JButton("Aktywuj nieśmiertelność");
+		_goraButton = new JButton("GÓRA");
+		_goraButton.setPreferredSize(new Dimension(160, 20));
+		_lewoButton = new JButton("LEWO");
+		_lewoButton.setPreferredSize(new Dimension(80, 20));
+		_dolButton = new JButton("DÓŁ");
+		_dolButton.setPreferredSize(new Dimension(160, 20));
+		_prawoButton = new JButton("PRAWO");
+		_prawoButton.setPreferredSize(new Dimension(80, 20));
+
 
 		_niesmiertelnoscButton.addActionListener(this);
-		_niesmiertelnoscButton.addKeyListener(this);
+		_goraButton.addActionListener(this);
+		_lewoButton.addActionListener(this);
+		_dolButton.addActionListener(this);
+		_prawoButton.addActionListener(this);
 		add(_niesmiertelnoscButton);
 		add(_niesmiertelnoscLabel);
+		add(_goraButton);
+		add(_lewoButton);
+		add(_prawoButton);
+		add(_dolButton);
 	}
 
 	public InputCzlowieka zabierzInputCzlowieka(){
@@ -51,34 +69,21 @@ public class InputCzlowiekaPanel extends JPanel implements ActionListener, KeyLi
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		_inputCzlowieka = InputCzlowieka.ZDOLNOSC;
-	}
-
-	@Override
-	public void keyPressed(KeyEvent event) {
-		switch (event.getKeyCode()){
-			case KeyEvent.VK_UP:
-				_inputCzlowieka = InputCzlowieka.GORA;
-				break;
-			case KeyEvent.VK_LEFT:
-				_inputCzlowieka = InputCzlowieka.LEWO;
-				break;
-			case KeyEvent.VK_DOWN:
-				_inputCzlowieka = InputCzlowieka.DOL;
-				break;
-			case KeyEvent.VK_RIGHT:
-				_inputCzlowieka = InputCzlowieka.PRAWO;
-				break;
-		}
+		Object przycisk = event.getSource();
+		if(przycisk == _niesmiertelnoscButton)
+			_inputCzlowieka = InputCzlowieka.ZDOLNOSC;
+		else if(przycisk == _goraButton)
+			_inputCzlowieka = InputCzlowieka.GORA;
+		else if(przycisk == _lewoButton)
+			_inputCzlowieka = InputCzlowieka.LEWO;
+		else if(przycisk == _dolButton)
+			_inputCzlowieka = InputCzlowieka.DOL;
+		else if(przycisk == _prawoButton)
+			_inputCzlowieka = InputCzlowieka.PRAWO;
 	}
 
 	public void odswiez(){
 		revalidate();
 		repaint();
 	}
-
-	@Override
-	public void keyTyped(KeyEvent event) {}
-	@Override
-	public void keyReleased(KeyEvent event) {}
 }

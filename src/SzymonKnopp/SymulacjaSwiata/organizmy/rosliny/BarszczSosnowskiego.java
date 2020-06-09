@@ -22,7 +22,7 @@ public class BarszczSosnowskiego extends Roslina {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(110,100,70);
+		return Color.getHSBColor(0.4f,1f,0.3f);
 	}
 
 	@Override

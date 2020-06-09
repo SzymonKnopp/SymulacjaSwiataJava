@@ -8,7 +8,7 @@ import java.awt.*;
 public class PlanszaPanel extends JPanel {
 	private static final int WYMIAR_X = 500;
 	private static final int WYMIAR_Y = 500;
-	private static final Color PUSTE_POLE = Color.GREEN;
+	private static final Color PUSTE_POLE = Color.WHITE;
 	private final int _szerokoscPola;
 	private final int _polaX;
 	private final int _polaY;

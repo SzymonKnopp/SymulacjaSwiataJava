@@ -21,7 +21,7 @@ public class Trawa extends Roslina {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(110,100,30);
+		return Color.GREEN;
 	}
 
 	@Override

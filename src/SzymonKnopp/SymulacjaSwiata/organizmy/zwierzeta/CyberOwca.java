@@ -32,7 +32,7 @@ public class CyberOwca extends Zwierze {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(28, 0,73);
+		return Color.GRAY;
 	}
 
 	@Override

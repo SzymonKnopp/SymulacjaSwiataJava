@@ -23,7 +23,7 @@ public class WilczeJagody extends Roslina {
 
 	@Override
 	public Color getKolor(){
-		return Color.getHSBColor(288,100,54);
+		return Color.getHSBColor(0.75f,1f,0.3f);
 	}
 
 	@Override
