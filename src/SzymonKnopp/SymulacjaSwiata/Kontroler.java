@@ -48,7 +48,7 @@ public class Kontroler {
 
 	public void przygotujSwiat(Pole pola) {
 		_wymiarySwiata = new Pole(pola.x,pola.y);
-		_swiat = new Swiat(_wymiarySwiata);
+		_swiat = new Swiat(_wymiarySwiata, this);
 		zapelnijSwiat();
 	}
 
@@ -61,7 +61,7 @@ public class Kontroler {
 			Pole wymiary = new Pole(plikSkaner.nextInt(), plikSkaner.nextInt());
 			int licznikTur = plikSkaner.nextInt();
 
-			_swiat = new Swiat(wymiary, licznikTur);
+			_swiat = new Swiat(wymiary, licznikTur, this);
 			_wymiarySwiata = wymiary;
 			wczytajOrganizmy(plikSkaner);
 		}
@@ -71,19 +71,17 @@ public class Kontroler {
 	}
 
 	public void przeprowadzSymulacje() {
-		_swiat.rysujSwiat();
 		_interfejs.ustawOrganizmy(_swiat.getPola());
 		_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
 		_interfejs.odswiez();
 		przetworzInput();
 		while (true) {
 			_swiat.wykonajTure();
-			_swiat.rysujSwiat();
 			_interfejs.ustawOrganizmy(_swiat.getPola());
 			_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
 			_interfejs.odswiez();
 			if (!_czlowiek.jestZywy()) {
-				System.out.println("Człowiek zginął, koniec gry!");
+				_swiat.dodajKomunikat("Człowiek zginął, koniec gry!");
 				return;
 			}
 			przetworzInput();
@@ -237,4 +235,6 @@ public class Kontroler {
 				return null;
 		}
 	}
+
+	public void dodajKomunikat(String komunikat){_interfejs.dodajKomunikat(komunikat);}
 }

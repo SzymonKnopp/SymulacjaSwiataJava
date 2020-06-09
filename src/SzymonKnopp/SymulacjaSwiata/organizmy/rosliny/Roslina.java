@@ -40,10 +40,10 @@ public abstract class Roslina extends Organizm {
 			Organizm organizm = _swiat.getOrganizmNaPolu(pole);
 			if (organizm == null) {
 				_swiat.dodajOrganizm(potomek(pole), pole);
-				System.out.println("Roślina na polu (" + _pozycja.toString() + ") rozprzestrzeniła się.");
+				_swiat.dodajKomunikat("Roślina na polu (" + _pozycja.toString() + ") rozprzestrzeniła się.");
 			}
 			else {
-				System.out.println("Roślina na polu (" + _pozycja.toString() + ") próbowała się rozprzestrzenić, ale wybrane miejsce było zajęte.");
+				_swiat.dodajKomunikat("Roślina na polu (" + _pozycja.toString() + ") próbowała się rozprzestrzenić, ale wybrane miejsce było zajęte.");
 			}
 		}
 	}

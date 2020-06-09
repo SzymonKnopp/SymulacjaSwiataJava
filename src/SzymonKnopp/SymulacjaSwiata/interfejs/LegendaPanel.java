@@ -38,7 +38,7 @@ public class LegendaPanel extends JPanel {
 		protected void paintComponent(Graphics pedzel) {
 			super.paintComponent(pedzel);
 			pedzel.setColor(_kolor);
-			pedzel.fillRect(0,2, 30, 30);
+			pedzel.fillOval(0,2, 30, 30);
 		}
 	}
 }

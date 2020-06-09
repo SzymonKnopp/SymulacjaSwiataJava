@@ -38,7 +38,7 @@ public class Lis extends Zwierze {
 	public void atakuj(Pole pole) {
 		Organizm przeciwnik = _swiat.getOrganizmNaPolu(pole);
 		if (przeciwnik.getSila() > _sila) { //charakterystyka lisa
-			System.out.println("Dobry węch lisa na polu (" + _pozycja.toString() + ") ostrzegł go przed zagrożeniem na polu (");
+			_swiat.dodajKomunikat("Dobry węch lisa na polu (" + _pozycja.toString() + ") ostrzegł go przed zagrożeniem na polu (");
 			return;
 		}
 

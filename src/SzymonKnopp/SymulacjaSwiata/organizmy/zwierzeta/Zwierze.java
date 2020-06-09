@@ -79,11 +79,11 @@ public abstract class Zwierze extends Organizm {
 	private void rozmnozSie() {
 		Pole pozycjaDziecka = znajdzMiejsceDlaDziecka();
 		if (pozycjaDziecka == null){
-			System.out.println("Zwierzę na (" + _pozycja.toString() + ") próbuje się rozmnożyć, ale brakuje miejsca na młode.");
+			_swiat.dodajKomunikat("Zwierzę na (" + _pozycja.toString() + ") próbuje się rozmnożyć, ale brakuje miejsca na młode.");
 			return;
 		}
 		_swiat.dodajOrganizm(potomek(pozycjaDziecka), pozycjaDziecka);
-		System.out.println("Na polu (" + _pozycja.toString() + ") narodziło się nowe zwierzę.");
+		_swiat.dodajKomunikat("Na polu (" + _pozycja.toString() + ") narodziło się nowe zwierzę.");
 	}
 
 	private Pole znajdzMiejsceDlaDziecka() {

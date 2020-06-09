@@ -30,9 +30,7 @@ public abstract class Organizm {
 		_sila = sila;
 		_inicjatywa = 0;
 	}
-	public void rysowanie(){
-		System.out.print(gatunek());
-	}
+
 	public abstract char gatunek();
 
 	public abstract void akcja();
@@ -52,7 +50,7 @@ public abstract class Organizm {
 		_jestZywy = false;
 		_swiat.wyszyscPole(_pozycja);
 		_swiat.zabijOrganizm(this);
-		System.out.println("Na polu (" + _pozycja.toString() + ") zginął organizm.");
+		_swiat.dodajKomunikat("Na polu (" + _pozycja.toString() + ") zginął organizm.");
 	}
 
 	public String toString() {

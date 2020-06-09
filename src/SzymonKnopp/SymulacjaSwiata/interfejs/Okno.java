@@ -3,6 +3,7 @@ package SzymonKnopp.SymulacjaSwiata.interfejs;
 import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 import javax.swing.*;
+import java.awt.*;
 
 public class Okno extends JFrame {
 	private final MenuPanel _menuPanel;
@@ -10,6 +11,7 @@ public class Okno extends JFrame {
 
 	public Okno() {
 		super("Symulacja świata - Szymon Knopp, 175550");
+		setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
 
 		_menuPanel = new MenuPanel();
 		_symulacjaPanel = null;
@@ -40,6 +42,8 @@ public class Okno extends JFrame {
 	public void ustawOrganizmy(Organizm[][] organizmy){
 		_symulacjaPanel.ustawOrganizmy(organizmy);
 	}
+
+	public void dodajKomunikat(String komunikat){_symulacjaPanel.dodajKomunikat(komunikat);}
 
 	public InputCzlowieka zabierzInputCzlowieka(){
 		return _symulacjaPanel.zabierzInputCzlowieka();

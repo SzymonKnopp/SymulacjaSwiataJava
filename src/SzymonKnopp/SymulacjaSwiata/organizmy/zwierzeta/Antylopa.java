@@ -75,11 +75,11 @@ public class Antylopa extends Zwierze {
 		}
 		Pole nowePole = znajdzWolnePoleDwaDalej();
 		if(nowePole == null){
-			System.out.println("Antylopa na polu (" + _pozycja.toString() + ") nie znalazła pola na które może uciec!");
+			_swiat.dodajKomunikat("Antylopa na polu (" + _pozycja.toString() + ") nie znalazła pola na które może uciec!");
 			return false;
 		}
 		przesunSie(nowePole);
-		System.out.println("Antylopa na polu (" + _pozycja.toString() + ") uciekła od konfliktu");
+		_swiat.dodajKomunikat("Antylopa na polu (" + _pozycja.toString() + ") uciekła od konfliktu");
 		return true;
 	}
 

@@ -86,7 +86,7 @@ public class Czlowiek extends Zwierze {
 		_jestZywy = false;
 		_swiat.wyszyscPole(_pozycja);
 		//_swiat.zabijOrganizm(this); // człowiek nie jest usuwany, żeby można było sprawdzić warunek zakończenia
-		System.out.println("Na polu (" + _pozycja.toString() + ") zginął człowiek.");
+		_swiat.dodajKomunikat("Na polu (" + _pozycja.toString() + ") zginął człowiek.");
 	}
 
 	public int getIleTurZdolnosci() {

@@ -17,6 +17,7 @@ public class PlanszaPanel extends JPanel {
 
 	public PlanszaPanel(Pole pola){
 		setPreferredSize(new Dimension(WYMIAR_X,WYMIAR_Y));
+		setBackground(Color.WHITE);
 
 		_polaX = pola.x;
 		_polaY = pola.y;
@@ -55,7 +56,7 @@ public class PlanszaPanel extends JPanel {
 			for (int x = 0; x < _polaX; x++) {
 				//organizm
 				pedzel.setColor(_kolory[x][y]);
-				pedzel.fillRect(_pola[x][y].x, _pola[x][y].y, _szerokoscPola, _szerokoscPola);
+				pedzel.fillOval(_pola[x][y].x, _pola[x][y].y, _szerokoscPola, _szerokoscPola);
 
 				//brzeg pola
 				pedzel.setColor(Color.BLACK);

@@ -7,23 +7,25 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SymulacjaPanel extends JPanel {
-	private final PlanszaPanel _planszaPanel;
+	private final PlanszaiLogPanel _planszaiLogPanel;
 	private final SimMenuPanel _simMenuPanel;
 
 	public SymulacjaPanel(Pole pola){
-		setLayout(new FlowLayout());
+		setLayout(new FlowLayout(FlowLayout.CENTER, 0,0));
 
-		_planszaPanel = new PlanszaPanel(pola);
+		_planszaiLogPanel = new PlanszaiLogPanel(pola);
 		_simMenuPanel = new SimMenuPanel();
 
 		add(new LegendaPanel());
-		add(_planszaPanel);
+		add(_planszaiLogPanel);
 		add(_simMenuPanel);
 	}
 
 	public void ustawOrganizmy(Organizm[][] organizmy){
-		_planszaPanel.ustawOrganizmy(organizmy);
+		_planszaiLogPanel.ustawOrganizmy(organizmy);
 	}
+
+	public void dodajKomunikat(String komunikat){_planszaiLogPanel.dodajKomunikat(komunikat);}
 
 	public InputCzlowieka zabierzInputCzlowieka(){
 		return _simMenuPanel.zabierzInputCzlowieka();
@@ -40,7 +42,7 @@ public class SymulacjaPanel extends JPanel {
 	public void odswiez(){
 		revalidate();
 		repaint();
-		_planszaPanel.odswiez();
+		_planszaiLogPanel.odswiez();
 		_simMenuPanel.odswiez();
 		revalidate();
 		repaint();
