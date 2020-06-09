@@ -87,7 +87,7 @@ public class Antylopa extends Zwierze {
 		Random random = new Random();
 		int kierunekInt = random.nextInt(4);
 		for (int i = 0; i < 4; i++) {
-			Pole poleDlaDziecka = getMiejsceObok(kierunek_t.values()[kierunekInt+i]);
+			Pole poleDlaDziecka = getMiejsceObok(kierunek_t.values()[(kierunekInt+i)%4]);
 			if (_swiat.wWymiarachSwiata(poleDlaDziecka) && _swiat.getOrganizmNaPolu(poleDlaDziecka) == null) {
 				return poleDlaDziecka;
 			}

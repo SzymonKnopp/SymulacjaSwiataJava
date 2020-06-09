@@ -18,13 +18,12 @@ public class Kontroler {
 	private Swiat _swiat;
 	private Pole _wymiarySwiata;
 	private Czlowiek _czlowiek;
-	private /*volatile*/final Okno _interfejs;
+	private volatile Okno _interfejs;
 	private boolean _zaladowanoSwiat;
 
 	public Kontroler(){
-		//Thread intefrejsThread = new Thread(()->{_interfejs = new Okno();});
-		//intefrejsThread.start();
-		_interfejs = new Okno();
+		Thread intefrejsThread = new Thread(()->{_interfejs = new Okno();});
+		intefrejsThread.run();
 
 		_zaladowanoSwiat = false;
 
@@ -149,7 +148,9 @@ public class Kontroler {
 			if(nazwaDoZapisu != null){
 				zapiszSwiat(nazwaDoZapisu);
 			}
+			_interfejs.odswiez();
 		}
+		_interfejs.odswiez();
 	}
 
 	private void wczytajOrganizmy(Scanner plikSkaner) {

@@ -15,6 +15,7 @@ public class InputCzlowiekaPanel extends JPanel implements ActionListener, KeyLi
 	public InputCzlowiekaPanel(){
 		setLayout(new FlowLayout());
 		setPreferredSize(new Dimension(200, 200));
+		setBackground(Color.LIGHT_GRAY);
 
 		_inputCzlowieka = null;
 		_niesmiertelnoscLabel = new JLabel();
