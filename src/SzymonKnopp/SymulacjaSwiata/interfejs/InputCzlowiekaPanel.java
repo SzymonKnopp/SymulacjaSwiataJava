@@ -59,10 +59,10 @@ public class InputCzlowiekaPanel extends JPanel implements ActionListener {
 		else{
 			_niesmiertelnoscButton.setEnabled(false);
 			if(turyNiesmiertelnosci > 0){
-				_niesmiertelnoscLabel.setText("Nieśmiertelność aktywna jeszce przez " + turyNiesmiertelnosci);
+				_niesmiertelnoscLabel.setText("<html>Nieśmiertelność aktywna<br>jeszcze przez " + turyNiesmiertelnosci + " tur</html>");
 			}
 			else{
-				_niesmiertelnoscLabel.setText("Nieśmiertelność gotowa za " + (turyNiesmiertelnosci + 5));
+				_niesmiertelnoscLabel.setText("<html>Nieśmiertelność gotowa<br>za " + (turyNiesmiertelnosci + 5) + " tur</html>");
 			}
 		}
 	}

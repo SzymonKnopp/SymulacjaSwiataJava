@@ -59,13 +59,13 @@ public class Czlowiek extends Zwierze {
 		kierunek_t kierunekRuchu;
 		switch (_input) {
 			case DOL:
-				kierunekRuchu = kierunek_t.dol; // kierunek w osi y obrócony, bo rysowane od y=0 (u góry)
+				kierunekRuchu = kierunek_t.gora; // kierunek w osi y obrócony, bo rysowane od y=0 (u góry)
 				break;
 			case PRAWO:
 				kierunekRuchu = kierunek_t.prawo;
 				break;
 			case GORA:
-				kierunekRuchu = kierunek_t.gora;
+				kierunekRuchu = kierunek_t.dol;
 				break;
 			case LEWO:
 				kierunekRuchu = kierunek_t.lewo;

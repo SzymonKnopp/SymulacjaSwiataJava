@@ -25,6 +25,11 @@ public class ZapiszSwiatPanel extends JPanel implements ActionListener {
 		add(new JLabel("Podaj nazwę zapisu:"));
 		add(_nazwaSwiataField);
 		add(new JLabel(".save"));
+
+		JButton zapiszButton = new JButton("Zapisz świat!");
+		zapiszButton.setPreferredSize(new Dimension(120, 20));
+		zapiszButton.addActionListener(this);
+		add(zapiszButton);
 	}
 
 	public String zabierzNazwaDoZapisu(){

@@ -54,7 +54,7 @@ public class Kontroler {
 
 	public void wczytajSwiat(String nazwa) {
 		try{
-			File plik = new File(nazwa + ".save");
+			File plik = new File(nazwa);
 			_zaladowanoSwiat = true;
 			Scanner plikSkaner = new Scanner(plik);
 
