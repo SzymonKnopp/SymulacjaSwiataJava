@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class ZapiszSwiatPanel extends JPanel implements ActionListener {
 	private final JTextField _nazwaSwiataField;
+	private final JLabel _zapisanoLabel;
 	private String _nazwaDoZapisu;
 
 	public ZapiszSwiatPanel(){
@@ -15,6 +16,8 @@ public class ZapiszSwiatPanel extends JPanel implements ActionListener {
 
 		_nazwaSwiataField = new JTextField();
 		_nazwaSwiataField.setPreferredSize(new Dimension(100, 20));
+		_nazwaSwiataField.setHorizontalAlignment(SwingConstants.RIGHT);
+		_zapisanoLabel = new JLabel("Zapisano świat!");
 		_nazwaDoZapisu = null;
 
 		add (new JLabel("ZAPISYWANIE"){
@@ -30,6 +33,8 @@ public class ZapiszSwiatPanel extends JPanel implements ActionListener {
 		zapiszButton.setPreferredSize(new Dimension(120, 20));
 		zapiszButton.addActionListener(this);
 		add(zapiszButton);
+		add(_zapisanoLabel);
+		_zapisanoLabel.setVisible(false);
 	}
 
 	public String zabierzNazwaDoZapisu(){
@@ -41,6 +46,17 @@ public class ZapiszSwiatPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		_nazwaDoZapisu = _nazwaSwiataField.getText();
+
+		Thread hideLabelThread = new Thread(() -> {
+			_zapisanoLabel.setVisible(true);
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			_zapisanoLabel.setVisible(false);
+		});
+		hideLabelThread.start();
 	}
 
 	public void odswiez(){
