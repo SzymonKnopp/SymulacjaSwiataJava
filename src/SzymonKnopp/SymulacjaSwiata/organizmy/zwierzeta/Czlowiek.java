@@ -20,7 +20,7 @@ public class Czlowiek extends Zwierze {
 		_sila = 5;
 		_inicjatywa = 4;
 		_specjalnaZdolnosc = false;
-		_timerZdolnosci = 0;
+		_timerZdolnosci = -5;
 		_cooldown = false;
 		_input = null;
 	}

@@ -19,10 +19,12 @@ public class Kontroler {
 	private Swiat _swiat;
 	private Pole _wymiarySwiata;
 	private Czlowiek _czlowiek;
-	private final Okno _interfejs;
+	private /*volatile*/final Okno _interfejs;
 	private boolean _zaladowanoSwiat;
 
 	public Kontroler(){
+		//Thread intefrejsThread = new Thread(()->{_interfejs = new Okno();});
+		//intefrejsThread.start();
 		_interfejs = new Okno();
 
 		_zaladowanoSwiat = false;
