@@ -36,4 +36,13 @@ public class MenuPanel extends JPanel {
 	public String zabierzNazwaZapisu(){
 		return  _wczytajSwiatPanel.zabierzNazwaZapisu();
 	}
+
+	public void odswiez(){
+		revalidate();
+		repaint();
+		_nowySwiatPanel.odswiez();
+		_wczytajSwiatPanel.odswiez();
+		revalidate();
+		repaint();
+	}
 }

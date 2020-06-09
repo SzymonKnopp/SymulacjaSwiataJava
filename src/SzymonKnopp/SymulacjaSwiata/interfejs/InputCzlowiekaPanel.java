@@ -71,6 +71,11 @@ public class InputCzlowiekaPanel extends JPanel implements ActionListener, KeyLi
 		}
 	}
 
+	public void odswiez(){
+		revalidate();
+		repaint();
+	}
+
 	@Override
 	public void keyTyped(KeyEvent event) {}
 	@Override

@@ -37,4 +37,9 @@ public class ZapiszSwiatPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		_nazwaDoZapisu = _nazwaSwiataField.getText();
 	}
+
+	public void odswiez(){
+		revalidate();
+		repaint();
+	}
 }

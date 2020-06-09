@@ -46,7 +46,6 @@ public class PlanszaPanel extends JPanel {
 				}
 			}
 		}
-		repaint();
 	}
 
 	@Override
@@ -63,5 +62,10 @@ public class PlanszaPanel extends JPanel {
 				pedzel.drawRect(_pola[x][y].x, _pola[x][y].y, _szerokoscPola, _szerokoscPola);
 			}
 		}
+	}
+
+	public void odswiez(){
+		revalidate();
+		repaint();
 	}
 }

@@ -52,4 +52,13 @@ public class Okno extends JFrame {
 	public String zabierzNazwaDoZapisu(){
 		return _symulacjaPanel.zabierzNazwaDoZapisu();
 	}
+
+	public void odswiez(){
+		revalidate();
+		repaint();
+		_menuPanel.odswiez();
+		_symulacjaPanel.odswiez();
+		revalidate();
+		repaint();
+	}
 }

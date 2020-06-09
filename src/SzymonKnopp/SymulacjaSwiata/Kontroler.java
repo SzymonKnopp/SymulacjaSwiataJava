@@ -1,6 +1,5 @@
 package SzymonKnopp.SymulacjaSwiata;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -44,6 +43,7 @@ public class Kontroler {
 			}
 		}
 		_interfejs.przedstawSymulacje(_wymiarySwiata);
+		_interfejs.odswiez();
 		przeprowadzSymulacje();
 	}
 
@@ -74,11 +74,13 @@ public class Kontroler {
 	public void przeprowadzSymulacje() {
 		_interfejs.ustawOrganizmy(_swiat.getPola());
 		_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
+		_interfejs.odswiez();
 		przetworzInput();
 		while (true) {
 			_swiat.wykonajTure();
 			_interfejs.ustawOrganizmy(_swiat.getPola());
 			_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
+			_interfejs.odswiez();
 			if (!_czlowiek.jestZywy()) {
 				System.out.println("Człowiek zginął, koniec gry!");
 				return;

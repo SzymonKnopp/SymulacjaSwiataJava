@@ -54,4 +54,9 @@ public class NowySwiatPanel extends JPanel implements ActionListener {
 	public Pole getWymiaryNowegoSwiata() {
 		return _wymiaryNowegoSwiata;
 	}
+
+	public void odswiez(){
+		revalidate();
+		repaint();
+	}
 }
