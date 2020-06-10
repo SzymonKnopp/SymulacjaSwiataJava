@@ -3,6 +3,8 @@ package SzymonKnopp.SymulacjaSwiata.organizmy.zwierzeta;
 import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
+
+import java.awt.*;
 import java.util.Random;
 
 public class Antylopa extends Zwierze {
@@ -21,6 +23,11 @@ public class Antylopa extends Zwierze {
 	@Override
 	public char gatunek() {
 		return 'A';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.PINK;
 	}
 
 	@Override
@@ -68,11 +75,11 @@ public class Antylopa extends Zwierze {
 		}
 		Pole nowePole = znajdzWolnePoleDwaDalej();
 		if(nowePole == null){
-			System.out.println("Antylopa na polu (" + _pozycja.toString() + ") nie znalazła pola na które może uciec!");
+			_swiat.dodajKomunikat("Antylopa na polu (" + _pozycja.toString() + ") nie znalazła pola na które może uciec!");
 			return false;
 		}
 		przesunSie(nowePole);
-		System.out.println("Antylopa na polu (" + _pozycja.toString() + ") uciekła od konfliktu");
+		_swiat.dodajKomunikat("Antylopa na polu (" + _pozycja.toString() + ") uciekła od konfliktu");
 		return true;
 	}
 
@@ -80,7 +87,7 @@ public class Antylopa extends Zwierze {
 		Random random = new Random();
 		int kierunekInt = random.nextInt(4);
 		for (int i = 0; i < 4; i++) {
-			Pole poleDlaDziecka = getMiejsceObok(kierunek_t.values()[kierunekInt+i]);
+			Pole poleDlaDziecka = getMiejsceObok(kierunek_t.values()[(kierunekInt+i)%4]);
 			if (_swiat.wWymiarachSwiata(poleDlaDziecka) && _swiat.getOrganizmNaPolu(poleDlaDziecka) == null) {
 				return poleDlaDziecka;
 			}

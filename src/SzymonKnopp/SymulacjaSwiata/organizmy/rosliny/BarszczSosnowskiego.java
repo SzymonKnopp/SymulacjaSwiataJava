@@ -4,6 +4,8 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
+
 public class BarszczSosnowskiego extends Roslina {
 	public BarszczSosnowskiego(Swiat swiat, Pole pole) {
 		super(swiat, pole);
@@ -16,6 +18,11 @@ public class BarszczSosnowskiego extends Roslina {
 	@Override
 	public char gatunek() {
 		return 'B';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(0.4f,1f,0.3f);
 	}
 
 	@Override

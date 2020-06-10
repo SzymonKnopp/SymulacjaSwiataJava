@@ -6,98 +6,96 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
+
+import SzymonKnopp.SymulacjaSwiata.interfejs.InputCzlowieka;
+import SzymonKnopp.SymulacjaSwiata.interfejs.Okno;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 import SzymonKnopp.SymulacjaSwiata.organizmy.zwierzeta.*;
 import SzymonKnopp.SymulacjaSwiata.organizmy.rosliny.*;
 
 public class Kontroler {
+	private static final int POZIOM_ZAPELNIENIA = 5;
 	private Swiat _swiat;
 	private Pole _wymiarySwiata;
-	private int _poziomZapelnieniaSwiata;
 	private Czlowiek _czlowiek;
+	private final Okno _interfejs;
+	private boolean _zaladowanoSwiat;
 
-	public void przygotujSwiat() {
-		Scanner skaner = new Scanner(System.in);
-		int x,y;
-		System.out.println("Podaj wymiar 'x' świata: ");
-		x = skaner.nextInt();
-		System.out.println("Podaj wymiar 'y' świata: ");
-		y = skaner.nextInt();
-		_wymiarySwiata = new Pole(x,y);
+	public Kontroler(){
+		_interfejs = new Okno();
 
-		System.out.println("Podaj poziom zapełnienia świata organizmami <0,10>: ");
-		_poziomZapelnieniaSwiata = skaner.nextInt();
-		System.out.println("#######################################");
+		_zaladowanoSwiat = false;
 
-		_swiat = new Swiat(_wymiarySwiata);
+		while(true){
+			_interfejs.odswiez();
+			Pole pola = _interfejs.getWymiaryNowegoSwiata();
+			if(pola != null){
+				przygotujSwiat(pola);
+				break;
+			}
+			String nazwaZapisu = _interfejs.zabierzNazwaZapisu();
+			if(nazwaZapisu != null){
+				wczytajSwiat(nazwaZapisu);
+				if(_zaladowanoSwiat){
+					break;
+				}
+			}
+		}
+		_interfejs.przedstawSymulacje(_wymiarySwiata);
+		przeprowadzSymulacje();
+	}
 
+	public void przygotujSwiat(Pole pola) {
+		_wymiarySwiata = new Pole(pola.x,pola.y);
+		_swiat = new Swiat(_wymiarySwiata, this);
 		zapelnijSwiat();
 	}
 
-	public void wczytajSwiat() {
-		Scanner skaner = new Scanner(System.in);
-		System.out.println("Podaj nazwe zapisu (bez '.save'): ");
-		String nazwa = skaner.nextLine();
+	public void wczytajSwiat(String nazwa) {
 		try{
-			File plik = new File(nazwa + ".save");
+			File plik = new File(nazwa);
+			_zaladowanoSwiat = true;
 			Scanner plikSkaner = new Scanner(plik);
 
 			Pole wymiary = new Pole(plikSkaner.nextInt(), plikSkaner.nextInt());
 			int licznikTur = plikSkaner.nextInt();
 
-			_swiat = new Swiat(wymiary, licznikTur);
+			_swiat = new Swiat(wymiary, licznikTur, this);
 			_wymiarySwiata = wymiary;
 			wczytajOrganizmy(plikSkaner);
 		}
 		catch (FileNotFoundException ex) {
-			System.out.println(("Nie znaleziono takiego zapisu!"));
+			_zaladowanoSwiat = false;
 		}
 	}
 
 	public void przeprowadzSymulacje() {
-		System.out.println("Autor: Szymon Knopp, 175550");
-		_swiat.rysujSwiat();
-		System.out.println();
-		System.out.println("\t -- Log wydarzeń --");
-		wypiszKomunikat();
+		_interfejs.ustawOrganizmy(_swiat.getPola());
+		_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
 		przetworzInput();
-		System.out.println("#######################################");
 		while (true) {
-			System.out.println("Autor: Szymon Knopp, 175550");
-			_swiat.rysujSwiat();
-			System.out.println();
-			System.out.println("\t -- Log wydarzeń --");
 			_swiat.wykonajTure();
-			_swiat.rysujSwiat();
+			_interfejs.ustawOrganizmy(_swiat.getPola());
+			_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
 			if (!_czlowiek.jestZywy()) {
-				System.out.println("Człowiek zginął, koniec gry!");
+				_swiat.dodajKomunikat("Człowiek zginął, koniec gry!");
 				return;
 			}
-			wypiszKomunikat();
 			przetworzInput();
-			System.out.println("#######################################");
 		}
 	}
 
 
-	private void zapiszSwiat() {
-		Scanner skaner = new Scanner(System.in);
-		System.out.print("Podaj nazwę zapisu: ");
-		String nazwa = skaner.nextLine();
+	private void zapiszSwiat(String nazwa) {
 		File plik = new File(nazwa + ".save");
 		try {
 			if(plik.createNewFile()) {
 				FileWriter doPlikuZapisu = new FileWriter(nazwa + ".save");
 				doPlikuZapisu.write(_swiat.toString() + "\nX");
 				doPlikuZapisu.close();
-				System.out.println("Zapisano swiat w pliku '" + nazwa + ".save'.");
-			}
-			else {
-				System.out.println("Zapis o takiej nazwie już istnieje! Kontynuowanie symulacji...");
 			}
 		}
 		catch (IOException ex){
-			System.out.println("Nie udało się stworzyć zapisu! Kontynuowanie symulacji...");
 		}
 	}
 
@@ -110,7 +108,7 @@ public class Kontroler {
 
 		for (int y = 0; y < _wymiarySwiata.y; y++) {
 			for (int x = 0; x < _wymiarySwiata.x; x++) {
-				if (!(y == pozycjaCzlowieka.y && x == pozycjaCzlowieka.x) && (random.nextInt(10)) + 1 <= _poziomZapelnieniaSwiata) {
+				if (!(y == pozycjaCzlowieka.y && x == pozycjaCzlowieka.x) && (random.nextInt(10)) + 1 <= POZIOM_ZAPELNIENIA) {
 					Pole pole = new Pole(x, y);
 					zapelnijPole(pole);
 				}
@@ -136,29 +134,18 @@ public class Kontroler {
 		return nowyOrganizm(gatunki.charAt(wybrany), pole);
 	}
 
-	private void wypiszKomunikat() {
-		if (_czlowiek.czyZdolnoscAktywowana()) {
-			System.out.println();
-			System.out.println("Nieśmiertelność aktywna jeszcze przez " + _czlowiek.getIleTurZdolnosci() + " tur.");
-			System.out.println("Strzałki - ruch człowiekiem | s - zapisanie świata");
-			System.out.println("AKTWYNA NIEŚMIERTELNOŚĆ" );
-		}
-		else{
-			System.out.println();
-			System.out.println("ijkl - ruch człowiekiem | spacja - nieśmiertelność | s - zapisanie świata");
-		}
-	}
-
 	private void przetworzInput() {
-		Scanner skaner = new Scanner(System.in);
-		char input = skaner.next().charAt(0);
-		if (input == 's') {
-			zapiszSwiat();
-			wypiszKomunikat();
-			przetworzInput();
-		}
-		else {
-			_czlowiek.setInput(input);
+		while(true){
+			_interfejs.odswiez();
+			InputCzlowieka input = _interfejs.zabierzInputCzlowieka();
+			if(input != null){
+				_czlowiek.setInput(input);
+				break;
+			}
+			String nazwaDoZapisu = _interfejs.zabierzNazwaDoZapisu();
+			if(nazwaDoZapisu != null){
+				zapiszSwiat(nazwaDoZapisu);
+			}
 		}
 	}
 
@@ -244,4 +231,6 @@ public class Kontroler {
 				return null;
 		}
 	}
+
+	public void dodajKomunikat(String komunikat){_interfejs.dodajKomunikat(komunikat);}
 }

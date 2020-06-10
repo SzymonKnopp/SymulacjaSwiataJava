@@ -11,8 +11,10 @@ public class Swiat {
 	private final Vector<Organizm> _martweOrganizmy; //organizmy do usunięcia
 	private final Organizm[][] _pola; //dwuwymiarowa tablica wskaźników na organizmy w konkretnym polu
 	private final Pole _wymiar;
+	private final Kontroler _kontroler;
 
-	public Swiat(Pole wymiary) {
+	public Swiat(Pole wymiary, Kontroler kontroler) {
+		_kontroler = kontroler;
 		_licznikTur = 0;
 		_organizmy = new Vector<>();
 		_noweOrganizmy = new Vector<>();
@@ -20,7 +22,8 @@ public class Swiat {
 		_wymiar = wymiary;
 		_pola = new Organizm[_wymiar.x][_wymiar.y];
 	}
-	public Swiat(Pole wymiary, int licznikTur) {
+	public Swiat(Pole wymiary, int licznikTur, Kontroler kontroler) {
+		_kontroler = kontroler;
 		_licznikTur = licznikTur;
 		_organizmy = new Vector<>();
 		_noweOrganizmy = new Vector<>();
@@ -31,7 +34,7 @@ public class Swiat {
 
 	public void wykonajTure() {
 		_licznikTur++;
-		System.out.println("Zaczyna się " + _licznikTur + " tura.");
+		dodajKomunikat("Zaczyna się " + _licznikTur + " tura.");
 
 		int inicjatywa = MAX_INICJATYWA;
 		while (true) {
@@ -61,29 +64,8 @@ public class Swiat {
 		aktywujNoweOrganizmy();
 	}
 
-	public void rysujSwiat() {
-	final char pustePole = ' ';
-		System.out.println();
-		System.out.print('\t');
-		for (int x = 0; x < _wymiar.x + 1; x++) {
-			System.out.print("# ");
-		}
-		System.out.println("#");
-		for (int y = 0; y < _wymiar.y; y++) {
-			System.out.print("\t# ");
-			for (int x = 0; x < _wymiar.x; x++) {
-				if (_pola[x][y] == null)
-					System.out.print(pustePole);
-				else _pola[x][y].rysowanie();
-				System.out.print(" ");
-			}
-			System.out.print("#\n");
-		}
-		System.out.print('\t');
-		for (int x = 0; x <  _wymiar.x + 1; x++) {
-			System.out.print("# ");
-		}
-		System.out.println("#");
+	public Organizm[][] getPola() {
+		return _pola;
 	}
 
 	public boolean wWymiarachSwiata(Pole pole) {
@@ -119,6 +101,8 @@ public class Swiat {
 		_organizmy.addAll(_noweOrganizmy);
 		_noweOrganizmy.clear();
 	}
+
+	public void dodajKomunikat(String komunikat){_kontroler.dodajKomunikat(komunikat);}
 
 	@Override
 	public String toString() {

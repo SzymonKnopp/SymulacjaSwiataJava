@@ -4,6 +4,8 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
+
 public class Mlecz extends Roslina {
 	public Mlecz(Swiat swiat, Pole pole) {
 		super(swiat, pole);
@@ -15,6 +17,11 @@ public class Mlecz extends Roslina {
 	@Override
 	public char gatunek() {
 		return 'M';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.YELLOW;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package SzymonKnopp.SymulacjaSwiata.interfejs;
 import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 import javax.swing.*;
+import java.awt.*;
 
 public class Okno extends JFrame {
 	private final MenuPanel _menuPanel;
@@ -10,6 +11,7 @@ public class Okno extends JFrame {
 
 	public Okno() {
 		super("Symulacja świata - Szymon Knopp, 175550");
+		setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
 
 		_menuPanel = new MenuPanel();
 		_symulacjaPanel = null;
@@ -27,19 +29,40 @@ public class Okno extends JFrame {
 		return _menuPanel.getWymiaryNowegoSwiata();
 	}
 
-	public String getNazwaZapisu(){
-		return _menuPanel.getNazwaZapisu();
+	public String zabierzNazwaZapisu(){
+		return _menuPanel.zabierzNazwaZapisu();
 	}
 
 	public void przedstawSymulacje(Pole pola){
 		remove(_menuPanel);
 		_symulacjaPanel = new SymulacjaPanel(pola);
 		add(_symulacjaPanel);
+		requestFocus();
 	}
 
 	public void ustawOrganizmy(Organizm[][] organizmy){
 		_symulacjaPanel.ustawOrganizmy(organizmy);
 	}
 
+	public void dodajKomunikat(String komunikat){_symulacjaPanel.dodajKomunikat(komunikat);}
 
+	public InputCzlowieka zabierzInputCzlowieka(){
+		return _symulacjaPanel.zabierzInputCzlowieka();
+	}
+
+	public void ustawKomunikatONiesmiertelnosci(int turyNiesmiertelnosci){
+		_symulacjaPanel.ustawKomunikatONiesmiertelnosci(turyNiesmiertelnosci);
+	}
+
+	public String zabierzNazwaDoZapisu(){
+		return _symulacjaPanel.zabierzNazwaDoZapisu();
+	}
+
+	public void odswiez(){
+		revalidate();
+		repaint();
+		if(_symulacjaPanel != null){
+			_symulacjaPanel.ustawFokusNaPoluInputu();
+		}
+	}
 }

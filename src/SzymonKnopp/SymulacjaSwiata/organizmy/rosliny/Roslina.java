@@ -4,6 +4,7 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
 import java.util.Random;
 
 public abstract class Roslina extends Organizm {
@@ -16,6 +17,9 @@ public abstract class Roslina extends Organizm {
 
 	@Override
 	public abstract char gatunek();
+
+	@Override
+	public abstract Color getKolor();
 
 	protected abstract Organizm potomek(Pole pole);
 
@@ -36,10 +40,10 @@ public abstract class Roslina extends Organizm {
 			Organizm organizm = _swiat.getOrganizmNaPolu(pole);
 			if (organizm == null) {
 				_swiat.dodajOrganizm(potomek(pole), pole);
-				System.out.println("Roślina na polu (" + _pozycja.toString() + ") rozprzestrzeniła się.");
+				_swiat.dodajKomunikat("Roślina na polu (" + _pozycja.toString() + ") rozprzestrzeniła się.");
 			}
 			else {
-				System.out.println("Roślina na polu (" + _pozycja.toString() + ") próbowała się rozprzestrzenić, ale wybrane miejsce było zajęte.");
+				_swiat.dodajKomunikat("Roślina na polu (" + _pozycja.toString() + ") próbowała się rozprzestrzenić, ale wybrane miejsce było zajęte.");
 			}
 		}
 	}

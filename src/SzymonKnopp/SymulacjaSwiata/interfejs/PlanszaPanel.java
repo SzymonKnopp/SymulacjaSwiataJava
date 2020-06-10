@@ -8,7 +8,7 @@ import java.awt.*;
 public class PlanszaPanel extends JPanel {
 	private static final int WYMIAR_X = 500;
 	private static final int WYMIAR_Y = 500;
-	private static final Color PUSTE_POLE = Color.GREEN;
+	private static final Color PUSTE_POLE = Color.WHITE;
 	private final int _szerokoscPola;
 	private final int _polaX;
 	private final int _polaY;
@@ -17,6 +17,7 @@ public class PlanszaPanel extends JPanel {
 
 	public PlanszaPanel(Pole pola){
 		setPreferredSize(new Dimension(WYMIAR_X,WYMIAR_Y));
+		setBackground(Color.WHITE);
 
 		_polaX = pola.x;
 		_polaY = pola.y;
@@ -46,7 +47,6 @@ public class PlanszaPanel extends JPanel {
 				}
 			}
 		}
-		repaint();
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class PlanszaPanel extends JPanel {
 			for (int x = 0; x < _polaX; x++) {
 				//organizm
 				pedzel.setColor(_kolory[x][y]);
-				pedzel.fillRect(_pola[x][y].x, _pola[x][y].y, _szerokoscPola, _szerokoscPola);
+				pedzel.fillOval(_pola[x][y].x, _pola[x][y].y, _szerokoscPola, _szerokoscPola);
 
 				//brzeg pola
 				pedzel.setColor(Color.BLACK);

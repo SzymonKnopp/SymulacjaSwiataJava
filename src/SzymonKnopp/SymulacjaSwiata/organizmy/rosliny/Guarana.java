@@ -4,6 +4,8 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 
+import java.awt.*;
+
 public class Guarana extends Roslina{
 	public Guarana(Swiat swiat, Pole pole) {
 		super(swiat, pole);
@@ -15,6 +17,11 @@ public class Guarana extends Roslina{
 	@Override
 	public char gatunek() {
 		return 'G';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.RED;
 	}
 
 	@Override

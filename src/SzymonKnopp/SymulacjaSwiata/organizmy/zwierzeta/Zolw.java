@@ -3,6 +3,8 @@ package SzymonKnopp.SymulacjaSwiata.organizmy.zwierzeta;
 import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.Swiat;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
+
+import java.awt.*;
 import java.util.Random;
 
 public class Zolw extends Zwierze {
@@ -21,6 +23,11 @@ public class Zolw extends Zwierze {
 	@Override
 	public char gatunek() {
 		return 'Z';
+	}
+
+	@Override
+	public Color getKolor(){
+		return Color.getHSBColor(0.1f,1f,0.6f);
 	}
 
 	@Override
@@ -46,7 +53,7 @@ public class Zolw extends Zwierze {
 	public boolean kolizja(Organizm atakujacy) {
 		if (atakujacy.getSila() >= _sila) {
 			if (atakujacy.getSila() < 5) { //charakterystyka żółwia
-				System.out.println("Atak na żółwia na polu (" + _pozycja.toString() + ") został odparty.");
+				_swiat.dodajKomunikat("Atak na żółwia na polu (" + _pozycja.toString() + ") został odparty.");
 				return true;
 			}
 			zgin();
