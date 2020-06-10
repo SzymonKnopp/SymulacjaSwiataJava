@@ -4,10 +4,13 @@ import SzymonKnopp.SymulacjaSwiata.Pole;
 import SzymonKnopp.SymulacjaSwiata.organizmy.Organizm;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Okno extends JFrame {
+public class Okno extends JFrame implements KeyListener {
 	private final MenuPanel _menuPanel;
 	private SymulacjaPanel _symulacjaPanel;
+	private InputCzlowieka _inputCzlowieka;
 
 	public Okno() {
 		super("Symulacja świata - Szymon Knopp, 175550");
@@ -15,12 +18,15 @@ public class Okno extends JFrame {
 
 		_menuPanel = new MenuPanel();
 		_symulacjaPanel = null;
+		_inputCzlowieka = null;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		setLocation(120, 60);
 		setSize(1000, 600);
 		setResizable(false);
+
+		addKeyListener(this);
 
 		add(_menuPanel);
 	}
@@ -61,4 +67,22 @@ public class Okno extends JFrame {
 		revalidate();
 		repaint();
 	}
+
+	@Override
+	public void keyPressed(KeyEvent event) {
+		int przycisk = event.getKeyCode();
+		if(przycisk == KeyEvent.VK_UP)
+			_inputCzlowieka = InputCzlowieka.GORA;
+		if(przycisk == KeyEvent.VK_LEFT)
+			_inputCzlowieka = InputCzlowieka.LEWO;
+		if(przycisk == KeyEvent.VK_DOWN)
+			_inputCzlowieka = InputCzlowieka.DOL;
+		if(przycisk == KeyEvent.VK_RIGHT)
+			_inputCzlowieka = InputCzlowieka.PRAWO;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent event) {}
+	@Override
+	public void keyReleased(KeyEvent event) {}
 }
