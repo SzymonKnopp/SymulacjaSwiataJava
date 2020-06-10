@@ -43,6 +43,7 @@ public class Okno extends JFrame implements KeyListener {
 		remove(_menuPanel);
 		_symulacjaPanel = new SymulacjaPanel(pola);
 		add(_symulacjaPanel);
+		requestFocus();
 	}
 
 	public void ustawOrganizmy(Organizm[][] organizmy){
@@ -52,7 +53,13 @@ public class Okno extends JFrame implements KeyListener {
 	public void dodajKomunikat(String komunikat){_symulacjaPanel.dodajKomunikat(komunikat);}
 
 	public InputCzlowieka zabierzInputCzlowieka(){
-		return _symulacjaPanel.zabierzInputCzlowieka();
+		if(_inputCzlowieka != null){
+			InputCzlowieka bufor = _inputCzlowieka;
+			_inputCzlowieka = null;
+			return bufor;
+		}
+		else return _symulacjaPanel.zabierzInputCzlowieka();
+
 	}
 
 	public void ustawKomunikatONiesmiertelnosci(int turyNiesmiertelnosci){
@@ -66,19 +73,26 @@ public class Okno extends JFrame implements KeyListener {
 	public void odswiez(){
 		revalidate();
 		repaint();
+		requestFocus();
 	}
 
 	@Override
 	public void keyPressed(KeyEvent event) {
 		int przycisk = event.getKeyCode();
-		if(przycisk == KeyEvent.VK_UP)
-			_inputCzlowieka = InputCzlowieka.GORA;
-		if(przycisk == KeyEvent.VK_LEFT)
-			_inputCzlowieka = InputCzlowieka.LEWO;
-		if(przycisk == KeyEvent.VK_DOWN)
-			_inputCzlowieka = InputCzlowieka.DOL;
-		if(przycisk == KeyEvent.VK_RIGHT)
-			_inputCzlowieka = InputCzlowieka.PRAWO;
+		switch (przycisk) {
+			case KeyEvent.VK_UP:
+				_inputCzlowieka = InputCzlowieka.GORA;
+				break;
+			case KeyEvent.VK_LEFT:
+				_inputCzlowieka = InputCzlowieka.LEWO;
+				break;
+			case KeyEvent.VK_DOWN:
+				_inputCzlowieka = InputCzlowieka.DOL;
+				break;
+			case KeyEvent.VK_RIGHT:
+				_inputCzlowieka = InputCzlowieka.PRAWO;
+				break;
+		}
 	}
 
 	@Override
