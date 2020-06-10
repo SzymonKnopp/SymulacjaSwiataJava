@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class InputCzlowiekaPanel extends JPanel implements ActionListener {
+public class InputCzlowiekaPanel extends JPanel implements ActionListener, KeyListener {
 	private InputCzlowieka _inputCzlowieka;
 	private final JLabel _niesmiertelnoscLabel;
 	private final JButton _niesmiertelnoscButton;
@@ -17,6 +19,7 @@ public class InputCzlowiekaPanel extends JPanel implements ActionListener {
 	public InputCzlowiekaPanel(){
 		setLayout(new FlowLayout());
 		setPreferredSize(new Dimension(200, 200));
+		addKeyListener(this);
 
 		_inputCzlowieka = null;
 		_niesmiertelnoscLabel = new JLabel();
@@ -42,6 +45,10 @@ public class InputCzlowiekaPanel extends JPanel implements ActionListener {
 		add(_lewoButton);
 		add(_prawoButton);
 		add(_dolButton);
+	}
+
+	public void ustawFokus(){
+		requestFocus();
 	}
 
 	public InputCzlowieka zabierzInputCzlowieka(){
@@ -80,4 +87,28 @@ public class InputCzlowiekaPanel extends JPanel implements ActionListener {
 		else if(przycisk == _prawoButton)
 			_inputCzlowieka = InputCzlowieka.PRAWO;
 	}
+
+	@Override
+	public void keyPressed(KeyEvent event) {
+		int przycisk = event.getKeyCode();
+		switch (przycisk) {
+			case KeyEvent.VK_UP:
+				_inputCzlowieka = InputCzlowieka.GORA;
+				break;
+			case KeyEvent.VK_LEFT:
+				_inputCzlowieka = InputCzlowieka.LEWO;
+				break;
+			case KeyEvent.VK_DOWN:
+				_inputCzlowieka = InputCzlowieka.DOL;
+				break;
+			case KeyEvent.VK_RIGHT:
+				_inputCzlowieka = InputCzlowieka.PRAWO;
+				break;
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent event) {}
+	@Override
+	public void keyReleased(KeyEvent event) {}
 }

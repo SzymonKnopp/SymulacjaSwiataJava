@@ -21,6 +21,10 @@ public class SymulacjaPanel extends JPanel {
 		add(_simMenuPanel);
 	}
 
+	public void ustawFokusNaPoluInputu(){
+		_simMenuPanel.ustawFokusNaPoluInputu();
+	}
+
 	public void ustawOrganizmy(Organizm[][] organizmy){
 		_planszaiLogPanel.ustawOrganizmy(organizmy);
 	}
