@@ -22,5 +22,6 @@ public class LogPanel extends JPanel{
 
 	public void dodajKomunikat(String komunikat){
 		_log.append(komunikat + '\n');
+		_log.setCaretPosition(_log.getDocument().getLength());
 	}
 }
