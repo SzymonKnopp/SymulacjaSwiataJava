@@ -18,16 +18,16 @@ public class Kontroler {
 	private Swiat _swiat;
 	private Pole _wymiarySwiata;
 	private Czlowiek _czlowiek;
-	private volatile Okno _interfejs;
+	private final Okno _interfejs;
 	private boolean _zaladowanoSwiat;
 
 	public Kontroler(){
-		Thread intefrejsThread = new Thread(()->{_interfejs = new Okno();});
-		intefrejsThread.run();
+		_interfejs = new Okno();
 
 		_zaladowanoSwiat = false;
 
 		while(true){
+			_interfejs.odswiez();
 			Pole pola = _interfejs.getWymiaryNowegoSwiata();
 			if(pola != null){
 				przygotujSwiat(pola);
@@ -42,7 +42,6 @@ public class Kontroler {
 			}
 		}
 		_interfejs.przedstawSymulacje(_wymiarySwiata);
-		_interfejs.odswiez();
 		przeprowadzSymulacje();
 	}
 
@@ -73,13 +72,11 @@ public class Kontroler {
 	public void przeprowadzSymulacje() {
 		_interfejs.ustawOrganizmy(_swiat.getPola());
 		_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
-		_interfejs.odswiez();
 		przetworzInput();
 		while (true) {
 			_swiat.wykonajTure();
 			_interfejs.ustawOrganizmy(_swiat.getPola());
 			_interfejs.ustawKomunikatONiesmiertelnosci(_czlowiek.getIleTurZdolnosci());
-			_interfejs.odswiez();
 			if (!_czlowiek.jestZywy()) {
 				_swiat.dodajKomunikat("Człowiek zginął, koniec gry!");
 				return;
