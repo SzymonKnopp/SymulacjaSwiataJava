@@ -136,6 +136,7 @@ public class Kontroler {
 
 	private void przetworzInput() {
 		while(true){
+			_interfejs.odswiez();
 			InputCzlowieka input = _interfejs.zabierzInputCzlowieka();
 			if(input != null){
 				_czlowiek.setInput(input);
@@ -145,9 +146,7 @@ public class Kontroler {
 			if(nazwaDoZapisu != null){
 				zapiszSwiat(nazwaDoZapisu);
 			}
-			_interfejs.odswiez();
 		}
-		_interfejs.odswiez();
 	}
 
 	private void wczytajOrganizmy(Scanner plikSkaner) {

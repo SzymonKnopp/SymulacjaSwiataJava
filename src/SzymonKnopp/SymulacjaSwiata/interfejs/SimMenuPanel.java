@@ -29,13 +29,4 @@ public class SimMenuPanel extends JPanel {
 	public String zabierzNazwaDoZapisu(){
 		return _zapiszSwiatPanel.zabierzNazwaDoZapisu();
 	}
-
-	public void odswiez(){
-		revalidate();
-		repaint();
-		inputCzlowiekaPanel.odswiez();
-		_zapiszSwiatPanel.odswiez();
-		revalidate();
-		repaint();
-	}
 }

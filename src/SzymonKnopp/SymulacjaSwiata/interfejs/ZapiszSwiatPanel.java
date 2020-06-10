@@ -58,9 +58,4 @@ public class ZapiszSwiatPanel extends JPanel implements ActionListener {
 		});
 		hideLabelThread.start();
 	}
-
-	public void odswiez(){
-		revalidate();
-		repaint();
-	}
 }

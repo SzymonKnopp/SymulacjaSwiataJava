@@ -60,9 +60,5 @@ public class Okno extends JFrame {
 	public void odswiez(){
 		revalidate();
 		repaint();
-		_menuPanel.odswiez();
-		_symulacjaPanel.odswiez();
-		revalidate();
-		repaint();
 	}
 }

@@ -64,9 +64,4 @@ public class PlanszaPanel extends JPanel {
 			}
 		}
 	}
-
-	public void odswiez(){
-		revalidate();
-		repaint();
-	}
 }

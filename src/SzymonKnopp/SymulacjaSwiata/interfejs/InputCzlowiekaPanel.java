@@ -80,9 +80,4 @@ public class InputCzlowiekaPanel extends JPanel implements ActionListener {
 		else if(przycisk == _prawoButton)
 			_inputCzlowieka = InputCzlowieka.PRAWO;
 	}
-
-	public void odswiez(){
-		revalidate();
-		repaint();
-	}
 }

@@ -26,14 +26,4 @@ public class PlanszaiLogPanel extends JPanel {
 	}
 
 	public void dodajKomunikat(String komunikat){_logPanel.dodajKomunikat(komunikat);}
-
-
-	public void odswiez(){
-		revalidate();
-		repaint();
-		_planszaPanel.odswiez();
-		_logPanel.odswiez();
-		revalidate();
-		repaint();
-	}
 }

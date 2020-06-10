@@ -64,9 +64,4 @@ public class WczytajSwiatPanel extends JPanel implements ActionListener {
 		_nazwaZapisu = null;
 		return buforNazwa;
 	}
-
-	public void odswiez(){
-		revalidate();
-		repaint();
-	}
 }

@@ -38,13 +38,4 @@ public class SymulacjaPanel extends JPanel {
 	public String zabierzNazwaDoZapisu(){
 		return _simMenuPanel.zabierzNazwaDoZapisu();
 	}
-
-	public void odswiez(){
-		revalidate();
-		repaint();
-		_planszaiLogPanel.odswiez();
-		_simMenuPanel.odswiez();
-		revalidate();
-		repaint();
-	}
 }
